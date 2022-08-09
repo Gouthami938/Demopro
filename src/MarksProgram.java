@@ -2,26 +2,7 @@ import java.util.Scanner;
 public class MarksProgram {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-    /*
-    int subjects = sc.nextInt();
-    int marks[] = new int[5];
-   // for(int i=1;i<=2;i++) {
-        for (int j = 1; j <=5; j++) {
-            marks[j] = sc.nextInt();
-        }
-    //}
-        int total=0;
-        for(int i=0;i<2;i++) {
-            total = total + marks[i];
-
-            System.out.println("Total marks of each student"+marks[i]+" "+total);
-
-        }
-    }
-    }
-*/
-
-        int students = 2;
+        int students = 15;
         int english[] = new int[students];
         int computerscience[] = new int[students];
         int social[] = new int[students];
