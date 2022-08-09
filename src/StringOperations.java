@@ -13,11 +13,7 @@ public class StringOperations {
         String merge= str+str1;
         //mergering
         System.out.println(merge);
-       //spliting
-        String a[]=str.split("i",1);
-        for(String a : str) {
-            System.out.println(a);
-        }
+     
 //Reversing the String
         for(int i=0;i<str.length();i++){
             char ch= str.charAt(i);
