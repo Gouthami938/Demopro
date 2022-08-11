@@ -1,48 +1,47 @@
-import java.util.Scanner;
-interface Account{
-    void deposit(float amount);
-    double balance(int time,int ROI,float amount);
+abstract class InterestCalculating{
+    String name;
+    int balance;
+    public InterestCalculating(String n,int bal){
+        this.name = n;
+        this.balance =bal;
+    }
+    public abstract double calInterest(double time);
+    public void deposit(int amount){
+        balance+=amount;
+    }
 }
-class Savings implements Account{
-    double bal=0;
-    @Override
-    public void deposit(float amount) {bal= bal+amount; }
-    @Override
-    public double balance(int time,int ROI, float amount) {
-        if(time<=75){return bal+bal*(1+(time/365)*ROI);
-        }return bal;
-    }}
-class Current implements Account{double bal=0;
-    @Override public void deposit(float amount) {bal+=amount;
-    }@Override public double balance(int time,int ROI, float amount)
-    {return bal+bal*(1+(time/365)*ROI);
-    }}
-public class BankProgram{
-    public static void main(String[] args)
-    {Scanner sc=new Scanner(System.in);
-        System.out.println("Enter account type:");
-        String accountant=sc.next();
-        System.out.println("Time period");
-        int time=sc.nextInt();
-        System.out.println("Enter amount");
-        float amount=sc.nextFloat();
-        System.out.println("Enter interest");
-        int ROI=sc.nextInt();
-        if(accountant.equals("savings")){Savings s=new Savings();
+class SavingsAccount extends InterestCalculating{
+    //Given interest 3 for saving
+    public SavingsAccount(String name,int balance){
+        super(name,balance);
+    }
+    public  double calInterest(double time){
+        double amt = (balance*time*3)/100;     //Given interest 3 for saving
 
-            String deposit=sc.next();
-            if(deposit.equals("y")){System.out.println("Enter deposit amount");
-                float dep=sc.nextFloat();
-                s.deposit(dep);
-            }System.out.println(s.balance(time,ROI,amount));
-        }
-        else{
-            Current c=new Current();
-
-            String deposit=sc.next();
-            if(deposit.equals("y")){
-                System.out.println("Enter deposit amount");
-                float dep=sc.nextFloat();
-                c.deposit(dep);
-            }System.out.println(c.balance(time,ROI,amount));
-        }}}
+        return (amt);
+    }
+}
+class CurrentAccount extends InterestCalculating{
+   //for current account interest is 0
+    public CurrentAccount(String name,int balance){
+        super(name,balance);
+    }
+    public  double calInterest(double time){
+        return 0;
+    }
+    public boolean withamt(double amount){ //withamt=withdraw amount
+        double range= (double)( balance + (0.2*balance)) ;
+        return (amount <= range);
+    }
+}
+public class BankProgram {
+    public static void main(String[] args) {
+        SavingsAccount object1= new SavingsAccount("Amritha",100000);
+        CurrentAccount object2= new CurrentAccount("Gopal",50000);
+        object2.deposit(10000);
+        System.out.println( object1.name +" Balance :"+object1.balance);
+        System.out.println(object2.name+ "  Balance :"+object2.balance);
+        System.out.println( "Interest of Amritha"+ object1.calInterest(0.25));
+        System.out.println( "Interest of Gopal"+ object2.calInterest(0.25));
+    }
+}
