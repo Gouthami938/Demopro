@@ -1,23 +1,26 @@
+import java.util.Scanner;
 public class ProgramThree {
     public static void main(String[] args) {
-        int r=3;
-        int c=4;
-        for(int i=1;i<=r;i++){
+        Scanner sc = new Scanner(System.in);
+        int rows=3;
+        int column=4;
+
+        System.out.println("Enter first character");
+        String ch=sc.nextLine();
+
+        System.out.println("Enter second character");
+        String ch1=sc.nextLine();
+
+        for(int i=1;i<=rows;i++){
             for(int j=1;j<=i;j++){
-                System.out.print("1");
+                System.out.print(ch);
             }
-            for(int j=1;j<=c-i;j++){
-                System.out.print("2");
+            for(int j=1;j<=column-i;j++){
+                System.out.print(ch1);
             }
             System.out.println();
 
         }
-      /* for(int i=1;i<=r;i++){
-            for(int j=1;j<=r-i;j++){
-                System.out.print("2");
-            }
-            System.out.println();
 
-        }*/
     }
 }
