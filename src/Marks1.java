@@ -13,10 +13,11 @@ public class Marks1 {
         int total1= 0;
         float percentage1;
 
-            for (int i = 0; i < marks.size(); i++) {
-                System.out.println(marks.get(i) + " " + i);
-                total = total + marks.get(i);
+            for (int position = 0; position < marks.size(); position++) {
+                System.out.println("marks"+ marks.get(position) + " " +"at position" +position);
+                total = total + marks.get(position);
             }
+        System.out.println("Percentage of total marks");
             System.out.println(percentage = (total / marks.size()) * 100);
     try {
     marks.remove(2);
@@ -24,14 +25,11 @@ public class Marks1 {
     catch(ArrayIndexOutOfBoundsException e){
     System.out.println("Ignore");
 }
-    for (int i = 0; i < marks.size(); i++) {
-        System.out.println(marks.get(i));
-        total1 = total1 + marks.get(i);
-
-
+    for (int position = 0; position < marks.size(); position++) {
+        System.out.println("marks"+marks.get(position)+" "+"at position"+position);
+        total1 = total1 + marks.get(position);
     }
+    System.out.println("Percentage after removing index2");
         System.out.println(percentage1 = (total1 / marks.size()) * 100);
-
-
     }
 }
